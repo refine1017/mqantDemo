@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/golang/protobuf v1.3.2 // indirect
-	github.com/gomodule/redigo v2.0.0+incompatible // indirect
+	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/hashicorp/consul/api v1.1.0 // indirect
 	github.com/liangdas/mqant v1.8.1-0.20190712072618-ec829251369f

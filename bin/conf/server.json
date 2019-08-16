@@ -32,7 +32,10 @@
     "DB": [
       {
         "Id": "DB001",
-        "ProcessID": "development"
+        "ProcessID": "development",
+        "Redis": {
+          "Uri"          :"redis://127.0.0.1:6379/0"
+        }
       }
     ]
   },
@@ -45,6 +48,6 @@
   "Rpc": {
     "MaxCoroutine": 10000,
     "RpcExpired": 1,
-    "LogSuccess": false
+    "Log": true
   }
 }
