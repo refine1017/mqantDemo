@@ -21,7 +21,7 @@ func main() {
 		panic(err)
 	}
 
-	res, err := client.Request("Gate/HD_Hello", []byte(`{"msg":"hello mqant"}`))
+	res, err := client.Request("Gate/HD_Hello", []byte(`{"name":"mqant"}`))
 	if err != nil {
 		panic(err)
 	}

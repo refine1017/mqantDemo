@@ -1,19 +1,20 @@
 package gate
 
 import (
+	"fmt"
 	"github.com/liangdas/mqant/gate"
 	"github.com/liangdas/mqant/log"
 )
 
 func (m *Module) handleHello(session gate.Session, req map[string]interface{}) (result string, err string) {
-	if req["msg"] == nil {
+	if req["name"] == nil {
 		result = "nothing"
 		return
 	}
 
-	msg := req["msg"].(string)
+	name := req["name"].(string)
 
-	log.Info("handleHello: %v", msg)
+	log.Info("handleHello: %v", name)
 
-	return msg, ""
+	return fmt.Sprintf("hello %v", name), ""
 }
