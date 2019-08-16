@@ -1,0 +1,50 @@
+{
+  "Module": {
+    "Gate": [
+      {
+        "Id": "Gate001",
+        "ProcessID": "development",
+        "Settings": {
+          "WSAddr": ":3653",
+          "TCPAddr": ":3563",
+          "MaxMsgLen": 4096,
+          "HTTPTimeout": 10,
+          "MaxConnNum": 20000,
+          "Tls": false,
+          "CertFile": "/opt/go/mqantserver/sslkey/h5link.pem",
+          "KeyFile": "/opt/go/mqantserver/sslkey/h5link.key",
+          "MinHBStorage": 60
+        }
+      }
+    ],
+    "Login": [
+      {
+        "Id": "Login001",
+        "ProcessID": "development"
+      }
+    ],
+    "Game": [
+      {
+        "Id": "Game001",
+        "ProcessID": "development"
+      }
+    ],
+    "DB": [
+      {
+        "Id": "DB001",
+        "ProcessID": "development"
+      }
+    ]
+  },
+  "Mqtt": {
+    "WirteLoopChanNum": 10,
+    "ReadPackLoop": 1,
+    "ReadTimeout": 600,
+    "WriteTimeout": 300
+  },
+  "Rpc": {
+    "MaxCoroutine": 10000,
+    "RpcExpired": 1,
+    "LogSuccess": false
+  }
+}

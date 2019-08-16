@@ -1,0 +1,7 @@
+.idea
+bin/*.exe
+bin/bi
+bin/logs
+pkg
+server/go.sum
+client/go.sum
