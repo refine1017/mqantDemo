@@ -16,8 +16,12 @@ func (m *Module) rpcCreatePlayerData(username string, nickname string) (string, 
 	return player, ""
 }
 
-func (m *Module) rpcLoadPlayerDataByUsername() {
-
+func (m *Module) rpcLoadPlayerDataByUsername(username string) (string, string){
+	player, err := m.LoadPlayer(username)
+	if err != nil {
+		return player, err.Error()
+	}
+	return player, ""
 }
 
 func (m *Module) rpcSavePlayerData() {

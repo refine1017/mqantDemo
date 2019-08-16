@@ -26,5 +26,13 @@ func (m *Module) handleRegister(session gate.Session, req map[string]interface{}
 }
 
 func (m *Module) handleLogin(session gate.Session, req map[string]interface{}) (result string, err string) {
-	return "", ""
+	username := req["username"].(string)
+
+	var rpcResult interface{}
+	rpcResult, err = m.RpcInvoke("DB", "LoadPlayerDataByUsername", username)
+	if err != "" {
+		return
+	}
+
+	return rpcResult.(string), err
 }

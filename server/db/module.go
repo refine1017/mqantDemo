@@ -34,8 +34,6 @@ func (m *Module) OnInit(app module.App, settings *conf.ModuleSettings) {
 	m.GetServer().RegisterGO("SavePlayerData", m.rpcSavePlayerData)
 }
 
-
-
 func (m *Module) Run(closeSig chan bool) {
 
 }
