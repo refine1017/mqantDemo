@@ -1,0 +1,24 @@
+{
+  "Module": {
+    "DB": [
+      {
+        "Id": "DB001",
+        "ProcessID": "development",
+        "Redis": {
+          "Uri"          :"redis://127.0.0.1:6379/0"
+        }
+      }
+    ]
+  },
+  "Mqtt": {
+    "WirteLoopChanNum": 10,
+    "ReadPackLoop": 1,
+    "ReadTimeout": 600,
+    "WriteTimeout": 300
+  },
+  "Rpc": {
+    "MaxCoroutine": 10000,
+    "RpcExpired": 1,
+    "Log": true
+  }
+}

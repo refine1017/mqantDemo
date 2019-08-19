@@ -16,27 +16,6 @@
           "MinHBStorage": 60
         }
       }
-    ],
-    "Login": [
-      {
-        "Id": "Login001",
-        "ProcessID": "development"
-      }
-    ],
-    "Game": [
-      {
-        "Id": "Game001",
-        "ProcessID": "development"
-      }
-    ],
-    "DB": [
-      {
-        "Id": "DB001",
-        "ProcessID": "development",
-        "Redis": {
-          "Uri"          :"redis://127.0.0.1:6379/0"
-        }
-      }
     ]
 },
   "Mqtt": {
