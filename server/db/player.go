@@ -3,15 +3,8 @@ package db
 import (
 	"encoding/json"
 	"github.com/gomodule/redigo/redis"
+	"server/model"
 )
-
-
-
-type Player struct {
-	Id       int    `json:"id"`
-	Username string `json:"username"`
-	Nickname string `json:"nickname"`
-}
 
 func (m *Module) ExistPlayer(username string) (bool, error) {
 	return redis.Bool(m.redis.Do("HEXISTS", RedisPlayers, username))
@@ -23,7 +16,7 @@ func (m *Module) CreatePlayer(username string, nickname string) (string, error) 
 		return "", err
 	}
 
-	player := &Player{}
+	player := &model.Player{}
 	player.Id = id
 	player.Username = username
 	player.Nickname = nickname

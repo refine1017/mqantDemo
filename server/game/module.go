@@ -9,6 +9,7 @@ import (
 
 type Module struct {
 	basemodule.BaseModule
+	playerManager *PlayerManager
 }
 
 func (m *Module) GetType() string {
@@ -21,6 +22,12 @@ func (m *Module) Version() string {
 
 func (m *Module) OnInit(app module.App, settings *conf.ModuleSettings) {
 	m.BaseModule.OnInit(m, app, settings)
+
+	m.playerManager = NewPlayerManager()
+
+	m.GetServer().Register("HD_Talk", m.handleTalk)
+
+	m.GetServer().Register("LoginPlayer", m.rpcLoginPlayer)
 }
 
 func (m *Module) Run(closeSig chan bool) {

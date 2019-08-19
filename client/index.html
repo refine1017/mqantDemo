@@ -67,15 +67,9 @@
             useSSL: false,
             onSuccess: onSuccess,
             onConnectionLost: onConnectionLost,
-        })
+        });
 
-        // ws.onmessage = function(e) {
-        //     var reader = new FileReader();
-        //     reader.readAsText(e.data)
-        //     reader.onload = function() {
-        //         document.getElementById('responseTxt').innerHTML = new Date().Format("yyyy-MM-dd hh:mm:ss") + " -- " + this.result + "<br/>" + document.getElementById('responseTxt').innerHTML;
-        //     }
-        // }
+        window.mqant.on("Game/TalkNotify", showNotify)
     }
 
     function setMsg(msg) {
@@ -87,8 +81,21 @@
         document.getElementById('responseTxt').innerHTML = "";
     }
 
-    function showResponse(res) {
+    function showResponse(data) {
+        var res = "";
+
+        let message = JSON.parse(data.payloadString);
+        if(message.Error !== "") {
+            res = "Err: " + message.Error;
+        } else {
+            res = message.Result;
+        }
+
         document.getElementById('responseTxt').innerHTML = new Date().Format("yyyy-MM-dd hh:mm:ss") + " -- " + res + "<br/>" + document.getElementById('responseTxt').innerHTML;
+    }
+
+    function showNotify(data) {
+        document.getElementById('responseTxt').innerHTML = new Date().Format("yyyy-MM-dd hh:mm:ss") + " -- Notify: " + data.payloadString + "<br/>" + document.getElementById('responseTxt').innerHTML;
     }
 
     function sendRequest() {
@@ -105,15 +112,7 @@
         let topic = msgs[sendMsg].topic;
         let body = document.getElementById('requestTxt').value;
 
-        window.mqant.request(topic, JSON.parse(body), function(data) {
-            let message = JSON.parse(data.payloadString);
-            if(message.Error !== "") {
-                showResponse("Err: " + message.Error);
-                return;
-            } else {
-                showResponse(message.Result);
-            }
-        })
+        window.mqant.request(topic, JSON.parse(body), showResponse)
     }
 
 </script>
