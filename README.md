@@ -17,3 +17,6 @@ cd bin
 ```
 open client/index.html in browser
 ```
+
+## Screenshot
+![screenshot](screenshot.png)

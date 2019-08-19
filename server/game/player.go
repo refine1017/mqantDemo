@@ -1,7 +1,9 @@
 package game
 
 import (
+	"encoding/json"
 	"github.com/liangdas/mqant/gate"
+	"github.com/liangdas/mqant/log"
 	"server/model"
 )
 
@@ -25,5 +27,18 @@ func (pm *PlayerManager) AddPlayer(player *model.Player, session gate.Session) {
 func (pm *PlayerManager) Broadcast(topic string, body []byte) {
 	for _, session := range pm.sessions {
 		session.Send(topic, body)
+	}
+}
+
+func (m *Module) SavePlayer(player *model.Player) {
+	buf, err := json.Marshal(player)
+	if err != nil {
+		log.Error("SavePlayer with err: %v", err)
+		return
+	}
+
+	err = m.RpcInvokeNR("DB", "SavePlayerData", player.Username, string(buf))
+	if err != nil {
+		log.Error("SavePlayer with err: %v", err)
 	}
 }

@@ -38,3 +38,7 @@ func (m *Module) CreatePlayer(username string, nickname string) (string, error) 
 func (m *Module) LoadPlayer(username string) (string, error) {
 	return redis.String(m.redis.Do("HGET", RedisPlayers, username))
 }
+
+func (m *Module) SavePlayer(username string, player string) (bool, error) {
+	return redis.Bool(m.redis.Do("HSET", RedisPlayers, username, player))
+}
